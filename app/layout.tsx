@@ -1,5 +1,4 @@
 import { Content, Footer, Header } from "antd/es/layout/layout";
-import Sider from "antd/es/layout/Sider";
 import { AppstoreOutlined, MenuFoldOutlined, MenuUnfoldOutlined, SearchOutlined, SettingOutlined, ContainerOutlined, BarcodeOutlined } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme, Button } from 'antd';
 import AppHeader from "@/app/components/AppHeader"
@@ -17,19 +16,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Layout style={{minHeight: "100vh"}}>
-        <AppHeader/>
-        {/* <Layout hasSider>
-          <AppSider>
-
-          </AppSider>
-        </Layout> */}
-        <Content>{children}</Content>
-        <Footer></Footer>
+        <Layout>
+          <AppHeader/>
+          <Layout hasSider>
+            <AppSider/>
+              <Layout style={{minHeight: "calc(100vh-64px)", padding: 16}}>    
+                <Content>{children}</Content>
+              </Layout>
+          </Layout> 
         </Layout>
-        
-        
+        <Footer></Footer>        
       </body>
     </html>
   );
 }
+
+
