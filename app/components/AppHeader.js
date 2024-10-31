@@ -20,11 +20,12 @@ export default function AppHeader(){
             justifyContent:"space-between"
           }}>
         {/* <Title level={3} style={{margin:0, color:"#FFFFFF"}}>EcoLife</Title> */}
-        <img
+        <div id="logo"> <img
          width={200}
          padding = {10}
          src="https://ledline.az/image/cache/catalog/frametheme/ecolife-200x33.png"
-        />
+        /></div>
+       
         <Search 
             size="large"
             style={{width:300}}
