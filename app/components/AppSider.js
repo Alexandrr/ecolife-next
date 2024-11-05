@@ -39,7 +39,7 @@ export default function AppSider(){
     return (
         <Sider width = {200} style={{position:"sticky", top:64, bottom:0,  heght:"calc(100vh - 64px)"}} >
             <Menu 
-            theme="dark"
+            theme="light"
             items={items}
             mode="inline"
             selectedKeys={selectedkey}
