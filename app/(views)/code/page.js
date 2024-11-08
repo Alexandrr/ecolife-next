@@ -32,7 +32,7 @@ export default function page() {
           onSearch={onSearch}
           allowClear  
           style={{
-            width: 200,
+            width: 300,
           }}
           enterButton />
           {searchResult && (           

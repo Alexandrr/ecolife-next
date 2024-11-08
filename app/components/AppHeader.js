@@ -19,17 +19,15 @@ export default function AppHeader(){
             alignItems:"center",
             justifyContent:"space-between"
           }}>
-        {/* <Title level={3} style={{margin:0, color:"#FFFFFF"}}>EcoLife</Title> */}
         <div id="logo"> <img
-         width={200}
-         padding = {10}
+        style={{margin:"auto", display: "block"}}
+         width={200}    
          src="https://ledline.az/image/cache/catalog/frametheme/ecolife-200x33.png"
         /></div>
        
         <Search 
-            size="large"
+            size="small"
             style={{width:300}}
-            enterButton ="Поиск"
             placeholder="Поиск по сайту"
         />
         

@@ -15,7 +15,7 @@ const items = [
       icon: <SearchOutlined />,
       children: [
         { key: '1', label: <Link href="/code">По коду</Link>, path:"/code", icon: <BarcodeOutlined /> },
-        { key: '2', label: <Link href="/name">По названию</Link>, path:"/name", icon: <ContainerOutlined /> },
+        { key: '2', label: <Link href="/name">По номеру</Link>, path:"/name", icon: <ContainerOutlined /> },
       ],
     },
     { key: 'sub2', label: 'История', icon: <AppstoreOutlined /> },
@@ -37,7 +37,7 @@ export default function AppSider(){
     }, [pathname]);
 
     return (
-        <Sider width = {200} style={{position:"sticky", top:64, bottom:0,  heght:"calc(100vh - 64px)"}} >
+        <Sider width = {200}  collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
             <Menu 
             theme="light"
             items={items}

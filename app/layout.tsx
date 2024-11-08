@@ -1,8 +1,10 @@
+"use client";
 import { Content, Footer, Header } from "antd/es/layout/layout";
 import { AppstoreOutlined, MenuFoldOutlined, MenuUnfoldOutlined, SearchOutlined, SettingOutlined, ContainerOutlined, BarcodeOutlined } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme, Button } from 'antd';
 import AppHeader from "@/app/components/AppHeader"
 import AppSider from "@/app/components/AppSider"
+import AppBreadcrumb from "@/app/components/AppBreadcrumb"
 
 
 
@@ -13,6 +15,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const {
+    token: { colorBgContainer, borderRadiusLG },
+  } = theme.useToken();
+
   return (
     <html lang="en">
       <body>
@@ -20,12 +26,23 @@ export default function RootLayout({
           <AppHeader/>
           <Layout hasSider>
             <AppSider/>
-              <Layout style={{minHeight: "calc(100vh-64px)", padding: 16}}>    
-                <Content>{children}</Content>
-              </Layout>
+              <Layout style={{padding: 16}}>    
+                <AppBreadcrumb/>
+                <Content style={{margin: '0 16px'}}>
+                <div
+          style={{
+            padding: 24,
+            minHeight: 380,
+            background: colorBgContainer,
+            borderRadius: borderRadiusLG,
+          }}
+        >
+                    {children}
+        </div>
+                  </Content>
+              </Layout>                
           </Layout> 
-        </Layout>
-        <Footer>footer</Footer>        
+        </Layout>        
       </body>
     </html>
   );
