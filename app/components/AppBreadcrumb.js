@@ -1,12 +1,13 @@
 import React from 'react'
+import { useState } from 'react'
 import { Breadcrumb } from 'antd'
 
-export default function AppBreadcrumb() {
+
+export default function AppBreadcrumb({items}) {
+  console.log(items)
   return (
-    <Breadcrumb style={{ margin: '16px 0' }}>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
-        </Breadcrumb>
+    <div>
+       <Breadcrumb style={{ margin: '16px 0' }} items={items}/>   
+    </div>         
   )
 }

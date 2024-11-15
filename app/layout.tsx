@@ -18,7 +18,9 @@ export default function RootLayout({
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
-
+  const breadcrumbItems = [
+    {title: 'По Коду', path: '/code'},
+  ];
   return (
     <html lang="en">
       <body>
@@ -27,7 +29,7 @@ export default function RootLayout({
           <Layout hasSider>
             <AppSider/>
               <Layout style={{padding: 16}}>    
-                <AppBreadcrumb/>
+                <AppBreadcrumb items = {breadcrumbItems}/>
                 <Content style={{margin: '0 16px'}}>
                 <div
           style={{
