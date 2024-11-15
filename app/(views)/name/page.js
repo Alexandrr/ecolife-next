@@ -2,6 +2,8 @@
 import React, { useEffect } from "react"; 
 import { Input } from "antd";
 import { Divider } from 'antd';
+import AppGrid from "@/app/components/AppGrid"
+ 
 
 const { Search } = Input;
 
@@ -36,12 +38,7 @@ export default function page() {
           {searchResult && (           
           <div className='results'>
                 <Divider orientation="left">Результат поиска</Divider>
-               
-                {/* <p><strong>Артикул:</strong> {searchResult.articul}</p>
-                <p><strong>Код:</strong> {searchResult.code}</p>
-                <p><strong>Название:</strong> {searchResult.nomenclature}</p>
-                <p><strong>Цена:</strong> {searchResult.price}</p>
-                <p><strong>Количество:</strong> {searchResult.quantity}</p> */}
+                <AppGrid resultItems = {searchResult.nomenclatures}/>               
           </div>
             )}
         </div>
