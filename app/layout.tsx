@@ -1,7 +1,6 @@
 "use client";
-import { Content, Footer, Header } from "antd/es/layout/layout";
-import { AppstoreOutlined, MenuFoldOutlined, MenuUnfoldOutlined, SearchOutlined, SettingOutlined, ContainerOutlined, BarcodeOutlined } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme, Button } from 'antd';
+import { Content} from "antd/es/layout/layout";
+import { Layout, theme} from 'antd';
 import AppHeader from "@/app/components/AppHeader"
 import AppSider from "@/app/components/AppSider"
 import AppBreadcrumb from "@/app/components/AppBreadcrumb"
@@ -18,9 +17,6 @@ export default function RootLayout({
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
-  const breadcrumbItems = [
-    {title: 'По Коду', path: '/code'},
-  ];
   return (
     <html lang="en">
       <body>
@@ -29,7 +25,7 @@ export default function RootLayout({
           <Layout hasSider>
             <AppSider/>
               <Layout style={{padding: 16}}>    
-                <AppBreadcrumb items = {breadcrumbItems}/>
+                <AppBreadcrumb/>
                 <Content style={{margin: '0 16px'}}>
                 <div
           style={{

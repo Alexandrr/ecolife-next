@@ -1,10 +1,7 @@
 import React from "react";
 import { Header } from "antd/es/layout/layout";
 import Search from "antd/es/input/Search";
-import Title from "antd/es/typography/Title";
-import { Color } from "antd/es/color-picker";
-import { Button, Flex, Image, Space, Switch } from "antd";
-import logo3 from "@/app/photos/logo3.jpg";  // Большой логотип
+import { Flex, Switch } from "antd";
 
 
 export default function AppHeader(){
@@ -19,7 +16,8 @@ export default function AppHeader(){
             alignItems:"center",
             justifyContent:"space-between"
           }}>
-        <div id="logo"> <img
+        <div id="logo">          
+             <img
         style={{margin:"auto", display: "block"}}
          width={200}    
          src="https://ledline.az/image/cache/catalog/frametheme/ecolife-200x33.png"

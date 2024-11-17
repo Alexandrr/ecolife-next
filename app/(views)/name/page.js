@@ -3,14 +3,22 @@ import React, { useEffect } from "react";
 import { Input } from "antd";
 import { Divider } from 'antd';
 import AppGrid from "@/app/components/AppGrid"
- 
+import { useSearchParams } from "next/navigation";
+
+function isNullOrUndefined(value) {
+  return value === undefined || value === null;
+}
+
+
 
 const { Search } = Input;
 
 export default function page() {
+  const searchParam = useSearchParams();
+  const searchValue = searchParam.get('value');
   const [searchResult, setSearchResult] = React.useState(null);
-  const onSearch = (value, _e, info) => {
-    console.log(info?.source, value);
+   
+  const onSearch = (value) => {
     fetch('http://468f0210607e.sn.mynetname.net:3050/api/GetData/databynom', {
       method: 'POST',
       headers: {
@@ -24,7 +32,15 @@ export default function page() {
     })
     .catch(error => console.error('Ошибка:', error));
   }
-
+  useEffect(() => {
+    if (!isNullOrUndefined(searchValue))
+      {
+        onSearch(searchValue);
+      }
+    }, [searchValue])  
+    
+    
+ 
   return (
     <div className="main-content">
         <div className="search-section">
@@ -34,7 +50,9 @@ export default function page() {
           style={{
             width: 300,
           }}
-          enterButton />
+          enterButton
+          defaultValue={searchValue}         
+          />
           {searchResult && (           
           <div className='results'>
                 <Divider orientation="left">Результат поиска</Divider>

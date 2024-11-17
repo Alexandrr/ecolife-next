@@ -1,16 +1,17 @@
 "use client";
-import React, { useEffect } from "react"; 
-import { Input } from "antd";
+import React from "react"; 
+import { Button, Input } from "antd";
 import { Divider } from 'antd';
-
+import { SearchOutlined } from '@ant-design/icons';
+import Link from "next/link";
 
 const { Search } = Input;
+
 
 
 export default function page() {
   const [searchResult, setSearchResult] = React.useState(null);
   const onSearch = (value, _e, info) => {
-    console.log(info?.source, value);
     fetch('http://468f0210607e.sn.mynetname.net:3050/api/GetData/databycode', {
       method: 'POST',
       headers: {
@@ -24,7 +25,13 @@ export default function page() {
     })
     .catch(error => console.error('Ошибка:', error));
   }
-
+  function GetSearchValue(value){
+    console.log(value)
+    var kod = value.slice(value.indexOf("kod:_") +5, value.length)
+    console.log(kod);
+    return kod;
+    }
+    
   return (
     <div className="main-content">
         <div className="search-section">
@@ -40,7 +47,11 @@ export default function page() {
                 <Divider orientation="left">Результат поиска</Divider>
                 <p><strong>Артикул:</strong> {searchResult.articul}</p>
                 <p><strong>Код:</strong> {searchResult.code}</p>
-                <p><strong>Название:</strong> {searchResult.nomenclature}</p>
+                <p><strong>Название:</strong> {searchResult.nomenclature}  
+                <Link href={{pathname: '/name', query: {value: GetSearchValue(searchResult.nomenclature)}}}>
+                  <span><Button type="primary" shape="circle" icon={<SearchOutlined />}/></span>               
+                </Link>
+                </p>
                 <p><strong>Цена:</strong> {searchResult.price}</p>
                 <p><strong>Количество:</strong> {searchResult.quantity}</p>
           </div>
