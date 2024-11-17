@@ -4,6 +4,7 @@ import { Input } from "antd";
 import { Divider } from 'antd';
 import AppGrid from "@/app/components/AppGrid"
 import { useSearchParams } from "next/navigation";
+import {Suspense} from "react"
 
 function isNullOrUndefined(value) {
   return value === undefined || value === null;
@@ -13,9 +14,9 @@ function isNullOrUndefined(value) {
 
 const { Search } = Input;
 
-export default function page() {
-  const searchParam = useSearchParams();
-  const searchValue = searchParam.get('value');
+export default function Name() {
+  const useSearchParam = useSearchParams();
+  const searchValue = useSearchParam.get('value');
   const [searchResult, setSearchResult] = React.useState(null);
    
   const onSearch = (value) => {
@@ -44,7 +45,8 @@ export default function page() {
   return (
     <div className="main-content">
         <div className="search-section">
-          <Search placeholder="Введите номенклатуру" 
+        <Suspense>
+        <Search placeholder="Введите номенклатуру" 
           onSearch={onSearch}
           allowClear  
           style={{
@@ -53,6 +55,9 @@ export default function page() {
           enterButton
           defaultValue={searchValue}         
           />
+        </Suspense>
+          
+
           {searchResult && (           
           <div className='results'>
                 <Divider orientation="left">Результат поиска</Divider>

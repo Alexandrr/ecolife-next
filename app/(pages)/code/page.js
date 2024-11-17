@@ -9,9 +9,10 @@ const { Search } = Input;
 
 
 
-export default function page() {
+
+export default function Code() {
   const [searchResult, setSearchResult] = React.useState(null);
-  const onSearch = (value, _e, info) => {
+  const onSearch = (value) => {
     fetch('http://468f0210607e.sn.mynetname.net:3050/api/GetData/databycode', {
       method: 'POST',
       headers: {
@@ -26,9 +27,7 @@ export default function page() {
     .catch(error => console.error('Ошибка:', error));
   }
   function GetSearchValue(value){
-    console.log(value)
     var kod = value.slice(value.indexOf("kod:_") +5, value.length)
-    console.log(kod);
     return kod;
     }
     

@@ -4,6 +4,7 @@ import { Layout, theme} from 'antd';
 import AppHeader from "@/app/components/AppHeader"
 import AppSider from "@/app/components/AppSider"
 import AppBreadcrumb from "@/app/components/AppBreadcrumb"
+import { Suspense } from "react";
 
 
 
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        
         <Layout style={{minHeight: '100vh',}}>
           <AppHeader/>
           <Layout hasSider>
@@ -28,15 +30,18 @@ export default function RootLayout({
                 <AppBreadcrumb/>
                 <Content style={{margin: '0 16px'}}>
                 <div
-          style={{
-            padding: 24,
-            minHeight: 380,
-            background: colorBgContainer,
-            borderRadius: borderRadiusLG,
-          }}
-        >
-                    {children}
-        </div>
+                    style={{
+                      padding: 24,
+                      minHeight: 380,
+                      background: colorBgContainer,
+                      borderRadius: borderRadiusLG,
+                    }}
+                  >
+        <Suspense fallback={<div>Loading...</div>}>
+            
+            {children}
+        </Suspense>
+                </div>
                   </Content>
               </Layout>                
           </Layout> 
